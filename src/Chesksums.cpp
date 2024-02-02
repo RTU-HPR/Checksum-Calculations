@@ -27,7 +27,7 @@ Checksum_CCITT_16::calculate(const uint8_t *data, size_t length)
 
 Checksum_CCITT_16::verify(const uint8_t *data, size_t length)
 {
-  uint16_t crc = calculate_crc_16_ccitt(data, length - 2); // Ignore the received checksum bytes at the end
+  uint16_t crc = Checksum_CCITT_16::calculate(data, length - 2); // Ignore the data checksum bytes at the end
 
   // Check checksum
   if (data[length - 2] == ((crc >> 8) & 0xFF) && data[length - 1] == (crc & 0xFF))
