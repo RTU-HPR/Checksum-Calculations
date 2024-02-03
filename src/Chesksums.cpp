@@ -1,6 +1,6 @@
 #include <Checksums.h>
 
-Checksum_CCITT_16::calculate(const uint8_t *data, size_t length)
+uint16_t Checksum_CCITT_16::calculate(const uint8_t *data, size_t length)
 {
   uint16_t crc = 0xFFFF; // Initial value
 
@@ -25,7 +25,7 @@ Checksum_CCITT_16::calculate(const uint8_t *data, size_t length)
   return crc;
 }
 
-Checksum_CCITT_16::verify(const uint8_t *data, size_t length)
+bool Checksum_CCITT_16::verify(const uint8_t *data, size_t length)
 {
   uint16_t crc = Checksum_CCITT_16::calculate(data, length - 2); // Ignore the data checksum bytes at the end
 
